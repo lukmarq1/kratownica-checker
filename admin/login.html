@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>ADMIN LOGIN</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>ADMIN</h1>
+
+  <input id="user" placeholder="Login">
+
+  <input
+    id="pass"
+    type="password"
+    placeholder="Hasło"
+  >
+
+  <button onclick="login()">
+    LOGIN
+  </button>
+
+</div>
+
+<script>
+
+async function login() {
+
+  const username =
+    document.getElementById('user').value;
+
+  const password =
+    document.getElementById('pass').value;
+
+  const response =
+    await fetch('/api/admin/login', {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        username,
+        password
+      })
+    });
+
+  if (response.ok) {
+    location.href =
+      '/admin/dashboard.html';
+  }
+}
+
+</script>
+
+</body>
+</html>

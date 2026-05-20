@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background: #0b0f1a;
+  color: #e2e8f0;
+  font-family: monospace;
+}
+
+.container {
+  width: 400px;
+  margin: 15vh auto;
+  padding: 40px;
+  background: #111827;
+  border: 1px solid #1d6fe8;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background: #0b0f1a;
+  border: 1px solid #1d6fe8;
+  color: white;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 25px;
+  background: #1d6fe8;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.success {
+  color: #10b981;
+  margin-top: 20px;
+}
+
+.fail {
+  color: #ef4444;
+  margin-top: 20px;
+}
