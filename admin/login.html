@@ -2,32 +2,81 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADMIN LOGIN</title>
-  <link rel="stylesheet" href="/style.css">
+
+  <style>
+
+    body{
+      background:#07142a;
+      color:white;
+      font-family:monospace;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+    }
+
+    .box{
+      width:400px;
+      background:#182845;
+      padding:40px;
+      border-radius:20px;
+      border:1px solid #294b7a;
+    }
+
+    input{
+      width:100%;
+      padding:15px;
+      margin-top:15px;
+      background:#07142a;
+      border:1px solid #294b7a;
+      color:white;
+      box-sizing:border-box;
+    }
+
+    button{
+      width:100%;
+      margin-top:20px;
+      padding:15px;
+      border:none;
+      background:#1299d6;
+      color:white;
+      cursor:pointer;
+    }
+
+    #msg{
+      margin-top:20px;
+      color:#ff6b81;
+    }
+
+  </style>
 </head>
 <body>
 
-<div class="container">
+<div class="box">
 
-  <h1>ADMIN</h1>
+  <h1>ADMIN LOGIN</h1>
 
   <input id="user" placeholder="Login">
+  <input id="pass" type="password" placeholder="Hasło">
 
-  <input
-    id="pass"
-    type="password"
-    placeholder="Hasło"
-  >
-
-  <button onclick="login()">
+  <button id="login-btn">
     LOGIN
   </button>
+
+  <div id="msg"></div>
 
 </div>
 
 <script>
 
-async function login() {
+document
+  .getElementById('login-btn')
+  .addEventListener('click', login);
+
+async function login(){
 
   const username =
     document.getElementById('user').value;
@@ -35,24 +84,41 @@ async function login() {
   const password =
     document.getElementById('pass').value;
 
-  const response =
-    await fetch('/api/admin/login', {
+  const msg =
+    document.getElementById('msg');
 
-      method: 'POST',
+  try{
 
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    const response =
+      await fetch('/api/admin/login',{
 
-      body: JSON.stringify({
-        username,
-        password
-      })
-    });
+        method:'POST',
 
-  if (response.ok) {
-    location.href =
-      '/admin/dashboard.html';
+        headers:{
+          'Content-Type':'application/json'
+        },
+
+        body:JSON.stringify({
+          username,
+          password
+        })
+      });
+
+    if(response.ok){
+
+      location.href =
+        '/admin/dashboard.html';
+
+      return;
+    }
+
+    msg.innerText =
+      'Błędny login lub hasło';
+
+  }catch(e){
+
+    msg.innerText =
+      'Błąd połączenia';
   }
 }
 
