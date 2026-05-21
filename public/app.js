@@ -11,6 +11,7 @@ async function verifyAngle() {
   }
 
   try {
+
     const response = await fetch('/api/verify', {
       method: 'POST',
       headers: {
@@ -37,9 +38,15 @@ async function verifyAngle() {
     result.className = 'fail';
 
   } catch (e) {
+
+    console.error(e);
+
     result.innerText = 'Błąd połączenia';
+    result.className = 'fail';
   }
 }
 
-/* TO JEST NAJWAŻNIEJSZE */
-window.verifyAngle = verifyAngle;
+/* TO JEST NOWE */
+document
+  .getElementById('verify-btn')
+  .addEventListener('click', verifyAngle);
