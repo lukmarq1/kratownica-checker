@@ -1,29 +1,78 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KRATOWNICA</title>
+
   <link rel="stylesheet" href="/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="scanline"></div>
+<div class="bg"></div>
 
-<div class="container">
+<div class="topbar">
 
-  <h1>KRATOWNICA</h1>
+  <div>
+    <h1>KRATOWNICA</h1>
+    <p class="subtitle">SYSTEM WERYFIKACJI KĄTA</p>
+    <div class="line"></div>
+  </div>
 
-  <input
-    id="angle-input"
-    type="number"
-    placeholder="Podaj kąt"
-  >
+  <div class="user-box">
+    <span>Zalogowany: Geocacher</span>
+  </div>
 
-  <button id="verify-btn">
-  WERYFIKUJ
-</button>
+</div>
 
-  <div id="result"></div>
+<div class="panel">
+
+  <div class="status-box">
+    <div class="status-title">STATUS</div>
+
+    <div id="result">
+      Pozostało prób: 3
+    </div>
+  </div>
+
+  <div class="form">
+
+    <label>
+      WPISZ KĄT (CAŁE STOPNIE)
+    </label>
+
+    <div class="input-wrapper">
+
+      <input
+        id="angle-input"
+        type="number"
+        placeholder="Wpisz kąt (całe stopnie)"
+      >
+
+      <span class="deg">°</span>
+
+    </div>
+
+    <button id="verify-btn">
+      ZWERYFIKUJ KĄT
+    </button>
+
+  </div>
+
+</div>
+
+<div class="footer">
+
+  <p>KRATOWNICA — PUZZLE GEOCACHINGU</p>
+  <p>Most Kolejowy w Ostrołęce • Linia nr 35</p>
+  <p>System weryfikacji kąta v1.0</p>
+
+  <a href="/admin/login.html">
+    Panel administratora
+  </a>
 
 </div>
 
